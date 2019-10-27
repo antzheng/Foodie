@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Main</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+</head>
+<body>
+        <div class='outside'>
+                <div class='top'>
+                  <h1>You should eat up to {{ "{:.2f}".format(user['caloriesNeeded']) }} calories a day</h1>
+                </div>
+                <div class='row'>
+                  <div class='card'>
+                    <h3>Breakfast</h3>
+                    <p> {{ foods[0][0]['title'] }} </p>
+                    <img src='{{ foods[0][1] }}' />
+                    <form action='' method='post'>
+                        <div class='bottom'><button type="submit" value="{{ foods[0][0]['restaurantChain'] }}" name='food'>Locate</button></div>
+                    </form>
+                  </div>
+                  <div class='card'>
+                    <h3>Lunch</h3>
+                    <p> {{ foods[1][0]['title'] }} </p>
+                    <img src='{{ foods[1][1] }}' />
+                    <form action='' method='post'>
+                        <div class='bottom'><button type="submit" value="{{ foods[1][0]['restaurantChain'] }}" name='food'>Locate</button></div>
+                    </form>
+                  </div>
+                  <div class='card'>
+                    <h3>Dinner</h3>
+                    <p> {{ foods[2][0]['title'] }} </p>
+                    <img src='{{ foods[2][1] }}' />
+                    <form action='' method='post'>
+                        <div class='bottom'><button type="submit" value="{{ foods[2][0]['restaurantChain'] }}" name='food'>Locate</button></div>
+                    </form>
+                  </div>
+                  <div class='card'>
+                    <h3>Snack</h3>
+                    <p> {{ foods[3][0]['title'] }} </p>
+                    <img src='{{ foods[3][1] }}' />
+                    <form action='' method='post'>
+                        <div class='bottom'><button type="submit" value="{{ foods[3][0]['restaurantChain'] }}" name='food'>Locate</button></div>
+                    </form>
+                  </div>
+                </div>
+                <div class='bottom'>
+                    <a href='main'><p id='generate'>Shuffle</p></a>
+                </div>
+            </div>
+</body>
+</html>

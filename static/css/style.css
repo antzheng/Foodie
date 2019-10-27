@@ -1,0 +1,53 @@
+body {
+    overflow:hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    background-position: center center;
+    background-image: url("../images/beach.jpg");
+    transition: background 0.5s linear;
+    font-family: "Helvetica Neue", "Bookman";
+}
+
+h1 {
+    color: white;
+    font-size: 2em;
+    text-align: center;
+    font-weight: 300;
+}
+
+h2 {
+    color: white;
+    font-size: 5em;
+    text-align: center;
+    font-weight: bolder;
+    border: 0px solid white;
+    display: block;
+    position: relative;
+    margin: 12.5% 1.5% 35px 1.5%;
+    letter-spacing: 10px;
+}
+
+p {
+    color: white;
+    font-size: 2.5em;
+    text-align: center;
+    font-weight: 300;
+    border: 3px solid white;
+    display: inline-block;
+    position: relative;
+    margin: 20px 3% 20px 1.5%;
+    padding: 20px 0 20px 0;
+    width: 250px;
+    text-decoration: none;
+}
+
+td {
+    text-align: center;
+    border-collapse: separate;
+}
+
+table {
+    width: 100%;
+}

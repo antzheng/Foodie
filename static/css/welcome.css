@@ -1,0 +1,48 @@
+select {
+    white-space: pre-line;
+    background-color: white;
+    border: none;
+}
+
+input[type=text] {
+    white-space: pre-line;
+    width: 80%;
+    padding: 12px 15px;
+    margin: 8px 10% 8px 10%;
+    box-sizing: border-box;
+}
+
+input[type=text]:focus {
+    border: 3px solid #555;
+}
+
+body {
+    overflow:hidden;
+    font-family: "Helvetica Neue", "Bookman";
+}
+
+input[type=submit] {
+    background-color: #606060;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.inputs {
+    margin-top: 15%;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+p {
+    text-align: center;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/welcome.css">
+</head>
+<body>
+    <div class='inputs'>
+    <form action='' method='post'>
+        <div><input type='text' placeholder='Bodyweight (lbs)' name='bodyweight' value='{{request.form.bodyweight}}'></div>
+        <div><input type='text' placeholder='Height (inches)' name='height' value='{{request.form.height}}'></div>
+        <div><input type='text' placeholder='Age (years)' name='age' value='{{request.form.age}}'></div>
+        <div><input type='text' placeholder='Sex (M or F)' name='sex' value='{{request.form.sex}}'></div>
+        <div><select name="activityLevel">
+            <option value="None">Activity Level</option>
+            <option value="1.2">Very light</option>
+            <option value="1.375">Light</option>
+            <option value="1.55">Moderate</option>
+            <option value="1.725">Very active</option>
+        </select></div>
+        <div><input type='submit' value='Enter'></div>
+    </form>
+    </div>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+    {% if user %}
+        <p>You need {{"{:.2f}".format(user.caloriesNeeded)}} calories</p>
+    {% endif %}
+</body>
+</html>
