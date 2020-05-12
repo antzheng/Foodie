@@ -2,7 +2,9 @@
 
 ![App Demo](./github/demo.gif)
 
-A Flask web application designed to process user inputs and provide a selection of meals for the day, tailored with the user in mind. Uses [spoonacular](https://spoonacular.com/food-api) to retrieve information about select meals and uses [Google Maps](https://developers.google.com/maps/documentation/javascript/tutorial) to provide locations of related restaurants.
+**Foodies** is a Flask app designed to process user inputs and provide a selection of meals for the day.
+- Uses [spoonacular](https://spoonacular.com/food-api) to retrieve information about select meals.
+- Uses [Google Maps](https://developers.google.com/maps/documentation/javascript/tutorial) to provide locations of related restaurants.
 
 ## Configuration Process
 
@@ -29,4 +31,4 @@ In the directory of the project:
 python3 app.py
 ```
 
-Your app will now be running locally!
+Your app is now running locally!
