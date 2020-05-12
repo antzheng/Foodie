@@ -7,21 +7,12 @@ from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
-user = None
-breakfasts = None
-mainCourses = None
-snacks = None
+user = breakfasts = mainCourses = snacks = locateQuery = None
 
-locateQuery = None
-
-apiKey = "b59a0fb087a9408dae32c4c6643a32d0"
+apiKey = "spoonacular-api-key"
 
 def grabURL(query):
-    query = query.replace(" ", "+")
-    query = query.replace("+", "%2B")
-    query = query.replace("#", "%23")
-    query = query.replace("/", "%2F")
-    query = query.replace(",", "%2C")
+    query = query.replace(" ", "+").replace("+", "%2B").replace("#", "%23").replace("/", "%2F").replace(",", "%2C")
     page = requests.get("https://www.google.com/search?q="+query+"&safe=active&sxsrf=ACYBGNTRcBgqNSZLtwlbkRPjpcefbJHYHA:1572139884843&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiP4P26pbvlAhVjc98KHSKbAbgQ_AUIEigB&biw=1440&bih=765#imgrc=5PIpuh1mN7nmlM")
     soup = BeautifulSoup(page.text, "html.parser")
     listOfLinks = list(soup.find_all("img"))
@@ -30,15 +21,6 @@ def grabURL(query):
         return (str(listOfLinks[num]).split("src=")[1].split("width")[0])[1:-1]
     except:
         return None
-
-def mapURL(query):
-    query = query.replace(" ", "+")
-    query = query.replace("+", "%2B")
-    query = query.replace("#", "%23")
-    query = query.replace("/", "%2F")
-    query = query.replace(",", "%2C")
-    url = "https://www.google.com/maps/embed/v1/search?q={}&key=AIzaSyDekUc9lSXBZL42lGpb7IozI73D20Y4eMA".format(query)
-    return url
 
 @app.route('/')
 def home():
@@ -52,13 +34,12 @@ def welcome():
     error = None
 
     if request.method == 'POST':
-
         try:
             bodyweight = float(request.form['bodyweight'])
             height = float(request.form['height'])
             age = float(request.form['age'])
             if request.form['sex'] not in sexes:
-                int("sike")
+                raise Exception
             sex = 'M' if request.form['sex'] in males else 'F'
             user = User(bodyweight, height, age, sex, float(request.form['activityLevel']))
             return redirect(url_for('main'))
@@ -69,12 +50,7 @@ def welcome():
 
 @app.route('/main', methods=['GET', 'POST'])
 def main():
-    global user
-    global apiKey
-    global breakfasts
-    global mainCourses
-    global snacks
-    global locateQuery
+    global user, apiKey, breakfasts, mainCourses, snacks, locateQuery
 
     if request.method == "POST":
         locateQuery = request.form['food']
@@ -104,7 +80,7 @@ def main():
                 (lunchFood, grabURL(lunchFood['title'])),
                 (dinnerFood, grabURL(dinnerFood['title'])),
                 (snackFood, grabURL(snackFood['title']))    ]
-    
+
     for tup in foods:
         if None in tup:
             return redirect(url_for("main"))
@@ -114,15 +90,8 @@ def main():
 @app.route('/locate', methods=['GET', 'POST'])
 def locate():
     global locateQuery
-    query = locateQuery
-    query = query.replace(" ", "+")
-    query = query.replace("+", "%2B")
-    query = query.replace("#", "%23")
-    query = query.replace("/", "%2F")
-    query = query.replace(",", "%2C")
+    query = locateQuery.replace(" ", "+").replace("+", "%2B").replace("#", "%23").replace("/", "%2F").replace(",", "%2C")
     return render_template("locate.html", query = query, location = locateQuery)
 
 if __name__ == '__main__':
     app.run(debug=False)
-
-
