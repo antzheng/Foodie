@@ -26,8 +26,27 @@ Now you're ready to run the application!
 
 In the directory of the project:
 
+Create a virtual environment for the project:
+
 ```
-. env/bin/activate
+python3 -m venv venv
+```
+
+Activate the virtual environment:
+
+```
+. venv/bin/activate
+```
+
+Install the necessary dependencies:
+
+```
+pip install -r requirements.txt
+```
+
+Start the app:
+
+```
 python3 app.py
 ```
 
